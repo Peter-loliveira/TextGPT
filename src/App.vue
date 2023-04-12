@@ -17,6 +17,8 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import inputTexto from './components/inputText.vue';
 import selectCicom from './components/selectCicom.vue';
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap"
 
 
 export default {
@@ -42,4 +44,5 @@ img {
   width: 35px;
   height: 35px;
 }
+
 </style>

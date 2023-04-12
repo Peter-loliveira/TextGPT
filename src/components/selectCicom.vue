@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <select class="lista-cicoms">
-        <option>Selecione uma Cicom</option>
+  <div id="lista">
+    <select  class="form-select form-select-lg p-4" id="lista-cicoms">
+        <option >Selecione uma Cicom</option>
         <option v-for="cicom in cicoms" :key = 'cicom.circuito' :value = 'cicom.cicom'>
             {{ cicom.cicom }} - {{ cicom.circuito }}
         </option>
@@ -158,10 +158,18 @@ export default {
 };
 </script>
 
-<style>
-.lista-cicoms{
+<style scoped>
+#lista-cicoms{
     width: 1046px;
-    height: 35px;
-    margin-bottom: 10px;
+}
+#lista {
+    display: flex;
+    flex: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#first-item{
+    color: red;
 }
 </style>

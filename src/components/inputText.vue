@@ -1,6 +1,6 @@
 <template>
   <div class="texts-area">
-    <textarea class="textsGenerated" :placeholder="textoInserido"></textarea>
+    <textarea class="textsGenerated " :placeholder="textoInserido"></textarea>
     <button class="buttons">📋</button>
   </div>
 </template>
