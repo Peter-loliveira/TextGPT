@@ -1,6 +1,6 @@
 <template>
   <div id="lista">
-    <select  class="form-select form-select-lg p-4" id="lista-cicoms">
+    <select class="form-select form-select-lg p-4" id="lista-cicoms" @change="alertar()"> 
         <option >Selecione uma Cicom</option>
         <option v-for="cicom in cicoms" :key = 'cicom.circuito' :value = 'cicom.cicom'>
             {{ cicom.cicom }} - {{ cicom.circuito }}
@@ -151,8 +151,8 @@ export default {
     };
   },
   methods: {
-    preencheCampos: ()=>{
-        console.log(this.cicoms.cicom);
+    alertar: function (){
+      alert('Selecionado')
     }
   }
 };

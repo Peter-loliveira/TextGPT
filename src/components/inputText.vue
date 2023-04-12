@@ -1,7 +1,7 @@
 <template>
   <div class="texts-area">
     <textarea class="textsGenerated " :placeholder="textoInserido"></textarea>
-    <button class="buttons">📋</button>
+    <button class="buttons" @click="copiarTexto()">📋</button>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
       textoInserido: `${this.textoPadrao}\nClique no botão ao lado para copiar para a área de transferência!`,
     };
   },
+  methods: {
+    copiarTexto: function () {
+      alert('Clicado')
+    },
+  }
 };
 </script>
 
