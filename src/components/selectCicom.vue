@@ -1,10 +1,18 @@
 <template>
   <div id="lista">
-    <select class="form-select form-select-lg p-4" id="lista-cicoms" @change="alertar()"> 
-        <option >Selecione uma Cicom</option>
-        <option v-for="cicom in cicoms" :key = 'cicom.circuito' :value = 'cicom.cicom'>
-            {{ cicom.cicom }} - {{ cicom.circuito }}
-        </option>
+    <select
+      class="form-select form-select-lg p-4"
+      id="lista-cicoms"
+      @change="preencher()"
+    >
+      <option>Selecione uma Cicom</option>
+      <option
+        v-for="cicom in cicoms"
+        :key="cicom.circuito"
+        :value="cicom.cicom"
+      >
+        {{ cicom.cicom }} - {{ cicom.circuito }}
+      </option>
     </select>
   </div>
 </template>
@@ -14,6 +22,11 @@ export default {
   name: "selectCicom",
   data() {
     return {
+      indexCicomSelecionada: 0,
+      dataIncidente: '',
+      textoFinal: '',
+      whatsappFinal: '',
+      // Lista de CICOMS e seus dados para a bertura do chamado
       cicoms: [
         {
           cicom: "Alagoinhas",
@@ -151,25 +164,54 @@ export default {
     };
   },
   methods: {
-    alertar: function (){
-      alert('Selecionado')
-    }
-  }
+    preencher: function () {
+      const lista = document.getElementById("lista-cicoms");
+      this.indexCicomSelecionada = lista.selectedIndex - 1;
+      this.geraHora()
+      this.textoFinal = `CICOM ${this.cicoms[this.indexCicomSelecionada].cicom.toUpperCase()}.\nInformamos que às ${this.dataIncidente} foi constatado que o link de dados do CICOM na cidade de ${this.cicoms[this.indexCicomSelecionada].cicom}, do circuito ${this.cicoms[this.indexCicomSelecionada].circuito.toUpperCase()}, encontra-se inoperante. \nInformamos ainda que o atendimento é de emergência operando 24h e não pode parar.\nTelefone / Contato: ${this.cicoms[this.indexCicomSelecionada].Tel} / Coordenador ou Adjunto da CICOM.\nChamado aberto por `;
+      this.whatsappFinal = `Foi aberto um Incidente junto à PRODEB referente à queda do link de DADOS da CICOM ${this.cicoms[this.indexCicomSelecionada].cicom.toUpperCase()}.\nIncidente Nº: `
+    },
+    geraHora: function() {
+      let data = new Date();
+      let dia = data.getDate();
+      if (dia < 10) {
+        dia = "0" + dia;
+      }
+
+      let mes = data.getMonth() + 1;
+      if (mes < 10) {
+        mes = "0" + mes;
+      }
+
+      let ano = data.getFullYear();
+
+      let hora = data.getHours();
+      if (hora < 10) {
+        hora = "0" + hora;
+      }
+
+      let min = data.getMinutes();
+      if (min < 10) {
+        min = "0" + min;
+      }
+      this.dataIncidente =  `${hora}h${min} do dia ${dia}/${mes}/${ano}`
+    },
+  },
 };
 </script>
 
 <style scoped>
-#lista-cicoms{
-    width: 1046px;
+#lista-cicoms {
+  width: 1046px;
 }
 #lista {
-    display: flex;
-    flex: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
-#first-item{
-    color: red;
+#first-item {
+  color: red;
 }
 </style>
