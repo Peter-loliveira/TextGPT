@@ -214,4 +214,7 @@ export default {
 #first-item {
   color: red;
 }
+select {
+  border: 1px solid rgb(153, 153, 153);
+}
 </style>

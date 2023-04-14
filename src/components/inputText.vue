@@ -1,24 +1,32 @@
 <template>
   <div class="texts-area">
-    <textarea class="textsGenerated " :placeholder="textoInserido"></textarea>
+    <textarea
+      textoGerado
+      class="textsGenerated"
+      :placeholder="textoInserido"
+      :id="textoPadrao"
+    ></textarea>
     <button class="buttons" @click="copiarTexto()">📋</button>
   </div>
 </template>
 
 <script>
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
 export default {
   name: "inputTexto",
   props: ["textoPadrao"],
   data() {
     return {
-      textoInserido: `${this.textoPadrao}\nClique no botão ao lado para copiar para a área de transferência!`,
+      textoInserido: `texto para o ${this.textoPadrao}\nClique no botão ao lado para copiar para a área de transferência!`,
     };
   },
   methods: {
     copiarTexto: function () {
-      alert('Clicado')
+      const textoGerado = document.getElementById(this.textoPadrao)
+      navigator.clipboard.writeText(textoGerado.value)
     },
-  }
+  },
 };
 </script>
 
@@ -47,7 +55,7 @@ export default {
 }
 
 .buttons {
-  background-color: aquamarine;
+  background-color: rgb(218, 218, 218);
   border-radius: 0 5px 5px 0;
   font-size: 20px;
 }

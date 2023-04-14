@@ -1,5 +1,6 @@
 <template>
   <div id="titulo">
+    <img src="./assets/logo.png" alt="">
     <h1>
       Textos padrões para abertura de
     </h1> 
@@ -7,9 +8,8 @@
       Incidentes nas Cicoms junto à PRODEB
     </h1> 
     <selectCicom />
-    <inputTexto textoPadrao ="Texto Para o incidente" />
-    <inputTexto textoPadrao ="Texto Para o Whatsapp" />
-    <img src="./assets/logo.png" alt="">
+    <inputTexto textoPadrao ="incidente" />
+    <inputTexto textoPadrao ="Whatsapp" />
   </div>
 </template>
 
