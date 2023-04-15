@@ -4,6 +4,7 @@
       textoGerado
       class="textsGenerated"
       :placeholder="textoInserido"
+      :value="textoFinal"
       :id="textoPadrao"
     ></textarea>
     <button class="buttons" @click="copiarTexto()">📋</button>
@@ -15,10 +16,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 export default {
   name: "inputTexto",
-  props: ["textoPadrao"],
+  props: ["textoPadrao", 'textoRecebido'],
   data() {
     return {
-      textoInserido: `texto para o ${this.textoPadrao}\nClique no botão ao lado para copiar para a área de transferência!`,
+      textoFinal: this.textoRecebido,
+      textoInserido: `Texto para o ${this.textoPadrao}\nClique no botão ao lado para copiar para a área de transferência!`,
     };
   },
   methods: {
