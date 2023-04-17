@@ -7,7 +7,7 @@
     <inputTexto idTextArea="whatsapp" :textoRecebido="textoWhatsapp" />
     <footer>
       Desenvolvido por 
-      <a href="https://github.com/peter-loliveira" target="_blank" class="link">
+      <a href="https://linktr.ee/peter.lolivera" target="_blank" class="link">
         <b class="author">PETER LANGE</b>
       </a> 
       em <b>VUE.JS</b> <img src="./assets/logo.png" alt="" />
