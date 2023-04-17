@@ -1,16 +1,14 @@
 <template>
   <div id="titulo">
     <img src="./assets/logo.png" alt="" />
-    <h1>Textos padrões para abertura de</h1>
-    <h1>Incidentes nas Cicoms junto à PRODEB</h1>
+    <h1>Textos padrões para Incidentes PRODEB</h1>
     <selectCicom @preencher="preencherCampos()" :cicoms="cicoms" />
-    <inputTexto :textoPadrao="incidente" :textoRecebido="textoInciente" />
-    <inputTexto :textoPadrao="whatsapp" :textoRecebido="textoWhatsapp" />
+    <inputTexto idTextArea="incidente" :textoRecebido="textoInciente" />
+    <inputTexto idTextArea="whatsapp" :textoRecebido="textoWhatsapp" />
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import inputTexto from "./components/inputText.vue";
 import selectCicom from "./components/selectCicom.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,11 +20,12 @@ export default {
     return {
       dataIncidente: "",
 
-      incidente: 'incidente',
-      whatsapp: 'whatsapp',
+      incidente: "incidente",
+      whatsapp: "whatsapp",
 
       textoInciente: "",
       textoWhatsapp: "",
+
       cicoms: [
         {
           cicom: "Alagoinhas",
@@ -168,18 +167,7 @@ export default {
     selectCicom,
   },
   methods: {
-    preencherCampos: function () {
-      this.geraHora();
-      let indiceCicom =
-        document.getElementById("lista-cicoms").selectedIndex - 1;
-
-      this.textoWhatsapp = `Foi aberto um Incidente junto à PRODEB referente à queda do link de DADOS da CICOM ${this.cicoms[
-        indiceCicom
-      ].cicom.toUpperCase()}.\nIncidente Nº: `;
-
-      // this.textoFinal = `CICOM ${this.cicoms[indexCicomSelecionada].cicom.toUpperCase()}.\nInformamos que às ${this.dataIncidente} foi constatado que o link de dados do CICOM na cidade de ${this.cicoms[this.cicomSelecionada].cicom.toUpperCase()}, do circuito ${this.cicoms[indexCicomSelecionada].circuito.toUpperCase()}, encontra-se inoperante. \nInformamos ainda que o atendimento é de emergência operando 24h e não pode parar.\nTelefone / Contato: ${this.cicoms[indexCicomSelecionada].Tel} / Coordenador ou Adjunto da CICOM.\nChamado aberto por `;
-    },
-    geraHora: function () {
+    geraHora() {
       let data = new Date();
       let dia = data.getDate();
       if (dia < 10) {
@@ -204,12 +192,29 @@ export default {
       }
       this.dataIncidente = `${hora}h${min} do dia ${dia}/${mes}/${ano}`;
     },
+
+    preencherCampos() {
+      this.geraHora();
+      const indiceCicom =
+        document.getElementById("lista-cicoms").selectedIndex - 1;
+
+      this.textoWhatsapp = `Foi aberto um Incidente junto à PRODEB referente à queda do link de DADOS da CICOM ${this.cicoms[
+        indiceCicom
+      ].cicom.toUpperCase()}.\nIncidente Nº: `;
+
+      this.textoInciente = `CICOM ${this.cicoms[
+        indiceCicom
+      ].cicom.toUpperCase()}.\nInformamos que às ${
+        this.dataIncidente
+      } foi constatado que o link de DADOS da CICOM da cidade de ${this.cicoms[
+        indiceCicom
+      ].cicom.toUpperCase()}, de circuito ${this.cicoms[
+        indiceCicom
+      ].circuito.toUpperCase()}, encontra-se inoperante. \nInformamos ainda que o atendimento é de emergência, operando 24h e não pode parar.\nTelefone / Contato: ${
+        this.cicoms[indiceCicom].Tel
+      } / Coordenador ou Adjunto da CICOM.\nChamado aberto por `;
+    },
   },
-  watch: {
-    textoWhatsapp(){
-      
-    }
-  }
 };
 </script>
 
@@ -220,7 +225,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 img {
   width: 35px;

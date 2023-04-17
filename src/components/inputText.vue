@@ -1,13 +1,12 @@
 <template>
   <div class="texts-area">
     <textarea
-      textoGerado
       class="textsGenerated"
       :placeholder="textoInserido"
-      :value="textoFinal"
-      :id="textoPadrao"
+      :id="idTextArea"
+      :value="exibeTexto"
     ></textarea>
-    <button class="buttons" @click="copiarTexto()">📋</button>
+    <button class="buttons" @click="copiarTexto()"> 📋 </button>
   </div>
 </template>
 
@@ -16,19 +15,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 export default {
   name: "inputTexto",
-  props: ["textoPadrao", 'textoRecebido'],
+  props: ["idTextArea", "textoRecebido"],
   data() {
     return {
-      textoFinal: this.textoRecebido,
-      textoInserido: `Texto para o ${this.textoPadrao}\nClique no botão ao lado para copiar para a área de transferência!`,
+      textoFinal: "",
+      textoInserido: `Texto para o ${this.idTextArea}\nClique no botão ao lado para copiar para a área de transferência!`,
     };
   },
   methods: {
     copiarTexto: function () {
-      const textoGerado = document.getElementById(this.textoPadrao)
+      const textoGerado = document.getElementById(this.idTextArea)
       navigator.clipboard.writeText(textoGerado.value)
     },
+      
   },
+  computed: {
+    exibeTexto() {
+      return this.textoRecebido
+    }
+  }
 };
 </script>
 
@@ -41,6 +46,7 @@ export default {
 .textsGenerated,
 .buttons {
   border: 1px solid gray;
+  padding: 10px;
 }
 
 .buttons:hover {
@@ -50,10 +56,11 @@ export default {
 .textsGenerated {
   border-radius: 5px 0 0 5px;
   width: 1000px;
+  height: 200px;
   resize: none;
   border: 1px solid gray;
   border-right: 0px;
-  height: 150px;
+  
 }
 
 .buttons {
