@@ -1,11 +1,19 @@
 <template>
+  <vue-title title="Static Title"></vue-title>
   <div id="titulo">
-    <img src="./assets/logo.png" alt="" />
     <h1>Textos padrões para Incidentes PRODEB</h1>
     <selectCicom @preencher="preencherCampos()" :cicoms="cicoms" />
     <inputTexto idTextArea="incidente" :textoRecebido="textoInciente" />
     <inputTexto idTextArea="whatsapp" :textoRecebido="textoWhatsapp" />
+    <footer>
+      Desenvolvido por 
+      <a href="https://github.com/peter-loliveira" target="_blank" class="link">
+        <b class="author">PETER LANGE</b>
+      </a> 
+      em <b>VUE.JS</b> <img src="./assets/logo.png" alt="" />
+    </footer>
   </div>
+  
 </template>
 
 <script>
@@ -15,7 +23,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 
 export default {
+  
   name: "App",
+  metaInfo: {
+      title: 'Incidentes CICOMs',
+  },
+  created(){
+    // muda o titulo da aba do navegador
+    document.title = "Incidentes CICOMs"
+    },
   data() {
     return {
       dataIncidente: "",
@@ -228,7 +244,18 @@ export default {
   margin-top: 20px;
 }
 img {
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
+}
+
+.author{
+  color: #41b883;
+}
+footer {
+  text-align: center;
+  width: 500x;
+}
+.link {
+  text-decoration: none;
 }
 </style>

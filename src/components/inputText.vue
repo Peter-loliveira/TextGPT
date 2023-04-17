@@ -41,7 +41,7 @@ export default {
 .texts-area {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .textsGenerated,
 .buttons {
