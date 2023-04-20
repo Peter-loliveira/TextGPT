@@ -2,7 +2,7 @@
   <vue-title title="Static Title"></vue-title>
   <div id="titulo">
     <h1>Textos padrões para Incidentes PRODEB</h1>
-    <selectCicom @preencher="preencherCampos()" :cicoms="cicoms" />
+    <selectCicom @preencher="preencherCampos()" :cicoms="cicoms" @zerarTextos = 'zerarTextos()' />
     <inputTexto idTextArea="incidente" :textoRecebido="textoInciente" />
     <inputTexto idTextArea="whatsapp" :textoRecebido="textoWhatsapp" />
     <footer>
@@ -25,9 +25,6 @@ import "bootstrap";
 export default {
   
   name: "App",
-  metaInfo: {
-      title: 'Incidentes CICOMs',
-  },
   created(){
     // muda o titulo da aba do navegador
     document.title = "Incidentes CICOMs"
@@ -230,6 +227,10 @@ export default {
         this.cicoms[indiceCicom].Tel
       } / Coordenador ou Adjunto da CICOM.\nChamado aberto por `;
     },
+    zerarTextos(){
+      this.textoInciente = ''
+      this.textoWhatsapp = ''
+    }
   },
 };
 </script>

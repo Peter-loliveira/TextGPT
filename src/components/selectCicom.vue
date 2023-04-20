@@ -23,7 +23,9 @@ export default {
   methods: {
     preencherCamposTexto() {
     const select = document.getElementById('lista-cicoms').selectedIndex
+    console.log(select);
     if (select === 0 ){
+      this.$emit('zerarTextos')
       return
     } else {
       this.$emit('preencher')
