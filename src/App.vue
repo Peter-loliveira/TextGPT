@@ -66,7 +66,7 @@ export default {
   components: {},
   methods: {
     gerarTextoFinal() {
-      this.textoFinal = `Gere texto para o anúncio de um ímovel com ${this.dadosImovel.area} m² de área total, ${this.dadosImovel.areaConstruida} m² de área Construida, ${this.dadosImovel.quartos} quartos, ${this.dadosImovel.suites} suites. O texto deve ter mais de 1500 caracteres.`;
+      this.textoFinal = `Gere texto para o anúncio de um ímovel com ${this.dadosImovel.area}m² de área total, ${this.dadosImovel.areaConstruida}m² de área Construida, ${this.dadosImovel.quartos} quartos, ${this.dadosImovel.suites} suites. O texto deve ter mais de 1500 caracteres.`;
       navigator.clipboard.writeText(this.textoFinal)
     },
   },
