@@ -1,5 +1,6 @@
 <template>
   <div class="areaTotal">
+    <!-- <img class="logo" src="./assets/remax.png" alt=""> -->
     <h1>Texto Padrão para Promt ChatGPT</h1>
     <div class="campos">
       <div class="campo">
@@ -23,7 +24,7 @@
         <input class="numericos" type="number" v-model="dadosImovel.suites" />
       </div>
     </div>
-    <button @click="gerarTextoFinal()" class="btn btn-success botao">
+    <button @click="gerarTextoFinal()" class="btn botao">
       Gerar Texto
     </button>
     <br>
@@ -65,7 +66,8 @@ export default {
   components: {},
   methods: {
     gerarTextoFinal() {
-      this.textoFinal = `Gere texto para o anuncio de um ímovel com ${this.dadosImovel.area} de área total, ${this.dadosImovel.areaConstruida} de área Construida, ${this.dadosImovel.quartos} quartos, ${this.dadosImovel.suites} suites. O texto deve ter mais de 1500 caracteres.`;
+      this.textoFinal = `Gere texto para o anúncio de um ímovel com ${this.dadosImovel.area} m² de área total, ${this.dadosImovel.areaConstruida} m² de área Construida, ${this.dadosImovel.quartos} quartos, ${this.dadosImovel.suites} suites. O texto deve ter mais de 1500 caracteres.`;
+      navigator.clipboard.writeText(this.textoFinal)
     },
   },
 };
@@ -110,6 +112,7 @@ h3 {
 }
 
 .textoFinal {
+  padding: 15px;
   font-size: 25px;
   font-weight: bold;
   text-align: justify;
@@ -126,5 +129,12 @@ h3 {
 
 .botao {
   margin: 5px;
+  background-color: #003da5;
+  color: aliceblue;
 }
+.botao:hover {
+  background-color: #e60e16;
+  color: aliceblue;
+}
+
 </style>
