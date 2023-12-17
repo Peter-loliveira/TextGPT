@@ -1,70 +1,72 @@
 <template>
-  <vue-title title="Static Title"></vue-title>
-  <div id="titulo">
+  <div class="areaTotal">
     <h1>Texto Padrão para Promt ChatGPT</h1>
     <div class="campos">
-      <h3>Área do Imovel</h3>
-      <input type="number" v-model="dadosImovel.area">
+      <div class="campo">
+        <h3>Área do Imovel</h3>
+        <input class="numericos" type="number" v-model="dadosImovel.area" />
+      </div>
+      <div class="campo">
+        <h3>Área Construida</h3>
+        <input
+          class="numericos"
+          type="number"
+          v-model="dadosImovel.areaConstruida"
+        />
+      </div>
+      <div class="campo">
+        <h3>Quartos</h3>
+        <input class="numericos" type="number" v-model="dadosImovel.quartos" />
+      </div>
+      <div class="campo">
+        <h3>Suites</h3>
+        <input class="numericos" type="number" v-model="dadosImovel.suites" />
+      </div>
     </div>
-    <div class="campos">
-      <h3>Área Construida</h3>
-      <input type="number" v-model="dadosImovel.areaConstruida">
-    </div>
-    <div class="campos">
-      <h3>Quartos</h3>
-      <input type="number" v-model="dadosImovel.quartos">
-    </div>
-    <div class="campos">
-      <h3>Suites</h3>
-      <input type="number" v-model="dadosImovel.suites">
-    </div>
-    <button @click="gerarTextoFinal()">Gerar Texto</button>
+    <button @click="gerarTextoFinal()" class="btn btn-success botao">
+      Gerar Texto
+    </button>
     <br>
-    <textarea name="" id="" cols="30" rows="10" v-model="textoFinal">  </textarea>
+    <textarea class="textoFinal" name="" id="" cols="30" rows="10" v-model="textoFinal"></textarea>
+    <br />
     
-    
-    <footer>
-      Desenvolvido por 
-      <a href="https://linktr.ee/peter.lolivera" target="_blank" class="link">
-        <b class="author">PETER LANGE</b>
-      </a> 
-      em <b>VUE.JS</b> <img src="./assets/logo.png" alt="" />
-    </footer>
   </div>
-  
+
+  <footer>
+    Desenvolvido por
+    <a href="https://linktr.ee/peter.lolivera" target="_blank" class="link">
+      <b class="author">PETER LANGE</b>
+    </a>
+    em <b>VUE.JS</b> <img src="./assets/logo.png" alt="" />
+  </footer>
 </template>
 
 <script>
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 
 export default {
-  
   name: "App",
-  created(){
+  created() {
     // muda o titulo da aba do navegador
-    document.title = "Texto para ChatGPT"
-    },
+    document.title = "Texto para ChatGPT";
+  },
   data() {
     return {
       dadosImovel: {
-          area: 0,
-          areaConstruida: 0,
-          quartos: 0,
-          suites: 0,
-        },
-      textoFinal: ''
+        area: 0,
+        areaConstruida: 0,
+        quartos: 0,
+        suites: 0,
+      },
+      textoFinal: '',
     };
   },
-  components: {
-    
-  },
+  components: {},
   methods: {
     gerarTextoFinal() {
-      this.textoFinal = `Gere texto para o anuncio de um ímovel com ${this.dadosImovel.area} de área total, ${this.dadosImovel.areaConstruida} de área Construida, ${this.dadosImovel.quartos} quartos, ${this.dadosImovel.suites} suites. O texto deve ter mais de 1500 caracteres.`
-    }
-    
+      this.textoFinal = `Gere texto para o anuncio de um ímovel com ${this.dadosImovel.area} de área total, ${this.dadosImovel.areaConstruida} de área Construida, ${this.dadosImovel.quartos} quartos, ${this.dadosImovel.suites} suites. O texto deve ter mais de 1500 caracteres.`;
+    },
   },
 };
 </script>
@@ -83,7 +85,7 @@ img {
   height: 25px;
 }
 
-.author{
+.author {
   color: #41b883;
 }
 footer {
@@ -94,9 +96,35 @@ footer {
   text-decoration: none;
 }
 
-.campos{
+
+.campos {
   display: flex;
   justify-content: center;
 }
+h3 {
+  margin-right: 5px;
+}
 
+.numericos {
+  width: 50px;
+}
+
+.textoFinal {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: justify;
+  width: 45%;
+
+}
+
+.campo {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.botao {
+  margin: 5px;
+}
 </style>
